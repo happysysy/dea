@@ -15,6 +15,7 @@ ol, ul {
 #hero-area .gallery_area .btn {
     margin : 0px !important;
     padding: 0 !important;
+    width:100%;
 }
 
 .maincard .gallery_area .btn_list>li {
