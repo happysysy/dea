@@ -1,0 +1,116 @@
+.maincard .gallery_area .btn_wrap {
+    width: 100%;
+    margin-top: 33px;
+    text-align: center;
+}
+
+.maincard .gallery_area .btn_list {
+    display: inline-block;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+#hero-area .gallery_area .btn {
+    margin : 0px !important;
+    padding: 0 !important;
+}
+
+.maincard .gallery_area .btn_list>li {
+    float: left;
+    vertical-align: top;
+}
+
+.maincard .gallery_area .btn_list .btn {
+    display: block;
+    overflow: hidden;
+    width: 60px;
+    height: 66px;
+    word-break: break-all;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+
+.maincard .gallery_area .btn_list .btn {
+    display: block;
+    overflow: hidden;
+    width: 60px;
+    height: 66px;
+    word-break: break-all;
+}
+
+.maincard .gallery_area .btn_list .ic.theme_background {
+    background-image: none;
+}
+
+
+.maincard .gallery_area .btn_list .ic {
+    overflow: hidden;
+    background-image: url(../img/sp_m_button_c05a82.png);
+    width: 44px;
+    height: 44px;
+    background-position: -459px -322px;
+    -webkit-background-size: 815px 749px;
+    background-size: 815px 749px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 44px;
+    height: 44px;
+    margin-left: -22px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.theme_background {
+    background-color: #334261 !important;
+}
+
+.maincard .gallery_area .btn_list .ic:after {
+    position: absolute;
+    left: 11px;
+    top: 11px;
+    width: 24px;
+    font-size: 20px;
+    color: #fff;
+}
+
+
+.maincard .gallery_area .btn_list .main-icons {
+    overflow: hidden;
+    /*background-image: url(../img/sp_m_button_c05a82.png);*/
+    width: 44px;
+    height: 44px;
+    background-position: -459px -322px;
+    -webkit-background-size: 815px 749px;
+    background-size: 815px 749px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 44px;
+    height: 44px;
+    margin-left: -22px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+
+.maincard .gallery_area .btn_list .main-icons:after {
+    position: absolute;
+    left: 11px;
+    top: 11px;
+    width: 24px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.theme_background.ic span {
+    color:white;
+    opacity: 0.9;
+}

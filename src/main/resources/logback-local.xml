@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanperiod="1 minutes">
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <!--
+    <springProfile name="local">
+        <property value="D:/LOG/LOTTEVN" name="LOG_FILE_PREFIX" />
+        <property value="D:/LOG/LOTTEVN" name="SIFT_DEBUG_FILE_PREFIX" />
+        <property value="D:/LOG/LOTTEVN" name="SIFT_ERROR_FILE_PREFIX" />
+    </springProfile>
+    -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p}\(${PID:- }\)[%t] [%logger{30}:%line][%M] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <springProfile name="local">
+        <!-- ====================================================== -->
+        <!-- == Logback DB Event Insert Start                       -->
+        <!-- ====================================================== -->
+
+
+        <!-- ====================================================== -->
+        <!-- == Logback DB Event Insert End                         -->
+        <!-- ====================================================== -->
+
+        <logger name="jdbc.sqlonly" level="DEBUG" additivity="false"/>
+        <logger name="jdbc.sqltiming" level="DEBUG"/>
+        <logger name="jdbc.audit" level="OFF"/>
+        <logger name="jdbc.resultset" level="OFF"/>
+        <logger name="jdbc.resultsettable" level="DEBUG" additivity="false"/>
+        <logger name="jdbc.connection" level="OFF"/>
+
+        <logger name="dea.homepage" level="DEBUG" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+        <logger name="dea.homepage" level="DEBUG" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+        <logger name="org.springframework" level="INFO" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+        <logger name="org.springframework.security" level="INFO" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+        <logger name="org.springframework.data" level="INFO" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+            <!--
+            <appender-ref ref="DB" />
+             -->
+        </root>
+    </springProfile>
+</configuration>
