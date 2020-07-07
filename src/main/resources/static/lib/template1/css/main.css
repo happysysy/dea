@@ -307,6 +307,7 @@ a.back-to-top:hover, a.back-to-top:focus {
 }
 
 .about-profile {
+  word-break: keep-all;
   line-height: 1.5;
   position: relative;
   font-size: 17px;
@@ -658,12 +659,7 @@ a.back-to-top:hover, a.back-to-top:focus {
   border-color: white;
 }
 
-/* only small tablets */
-@media (min-width: 768px) and (max-width: 991px) {
-  #nav-main li a.nav-link {
-    padding-top: 18px;
-  }
-}
+
 
 .navbar-toggler {
   display: none;
@@ -673,46 +669,38 @@ a.back-to-top:hover, a.back-to-top:focus {
   display: none;
 }
 
-.slicknav_menu {
-  display: none;
-}
-
-@media screen and (max-width: 768px) {
-  .navbar-header {
-    width: 100%;
-  }
-  .navbar-brand {
-    position: absolute;
-    padding: 0px 15px;
-    top: 0;
-  }
-  .navbar-brand img {
-    width: 75%;
-  }
-  #mobile-menu {
+/*
+  .slicknav_menu {
     display: none;
   }
-  .slicknav_menu {
-    display: block;
-  }
-  .slicknav_nav .active a {
-    background: #E91E63;
-    color: #fff;
-  }
-  .slicknav_nav a:hover,
-  .slicknav_nav a:focus,
-  .slicknav_nav .active {
-    color: #00b4d9;
-    outline: none;
-    background: #f8f9fa;
-  }
+*/
+
+
+/* ==========================================================================
+visual wrap
+========================================================================== */
+.visual-wrap {
+  position: relative;
+}
+.visual-wrap #hero-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item img {
+  /*width: 100%;*/
+  /*height: 100%;*/
+  /*min-height: 417px;*/
 }
 
 /* ==========================================================================
 3. Hero Area
 ========================================================================== */
 .hero-area-bg {
-  background: url(../img/hero-area.jpg) no-repeat;
+  /*background: url(../img/hero-area.jpg) no-repeat;*/
   background-size: cover;
 }
 
@@ -725,8 +713,8 @@ a.back-to-top:hover, a.back-to-top:focus {
 #hero-area .overlay {
   position: absolute;
   width: 100%;
-  height: 100%;
-  top: 0px;
+  height: calc(100% - 57px);
+  bottom: 0px;
   left: 0px;
   background: #0c0808;
   opacity: 0.6;
@@ -1135,6 +1123,76 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
 
 #copyright p a:hover {
   color: #00b4d9;
+}
+
+.slicknav_menu {
+  display: block;
+}
+
+
+
+
+/* 768 이하일 때 실행 */
+@media screen and (max-width: 768px) {
+  .navbar-header {
+    width: 100%;
+  }
+  .navbar-brand {
+    position: absolute;
+    padding: 0px 15px;
+    top: 0;
+  }
+  .navbar-brand img {
+    width: 75%;
+  }
+  #mobile-menu {
+    display: none;
+  }
+  .slicknav_menu {
+    display: block;
+  }
+  .slicknav_nav .active a {
+    background: #E91E63;
+    color: #fff;
+  }
+  .slicknav_nav a:hover,
+  .slicknav_nav a:focus,
+  .slicknav_nav .active {
+    color: #00b4d9;
+    outline: none;
+    background: #f8f9fa;
+  }
+}
+
+/* only small tablets */
+/* 768 이상이고 991 이하일때 실행 */
+@media (min-width: 768px) and (max-width: 991px) {
+  #nav-main li a.nav-link {
+    padding-top: 18px;
+  }
+
+  .navbar-header {
+    width: 100%;
+  }
+}
+
+
+/* media 992 이상일 때 실행 */
+@media screen and ( min-width: 992px ) {
+
+  .slicknav_menu {
+    display: none;
+  }
+
+  #hero-area .overlay {
+    height: calc(100% - 70px);
+  }
+
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+    /*min-height: 610px;*/
+  }
 }
 
 
