@@ -40,7 +40,10 @@ public class WebApplication extends SpringBootServletInitializer {
         Arrays.sort( beanNames );
         for (String beanName : beanNames) {
 
+            System.out.println( " bean이름 ::: " +beanName );
         }
+
+
     }
 
     public static Object getBean(final String beanName) {

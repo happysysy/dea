@@ -785,16 +785,14 @@ a.back-to-top:hover, a.back-to-top:focus {
   background: #f2f2f2;
 }
 
-#portfolios .mix {
-  padding: 10px;
-}
-
 #portfolios .portfolio-item .shot-item {
   margin: 0px;
 }
 
 #portfolio .mix {
+  width: 33.33333%;
   display: none;
+  padding: 2px;
 }
 
 .controls {

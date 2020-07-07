@@ -46,11 +46,13 @@ spring:
     cache: false
 
   ############## DB연결 ( mysql )
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    jdbcUrl: jdbc:mysql://119.192.148.204:3306/system_failure_mgnt?useSSL=false&characterEncoding=utf8&serverTimezone=UTC&useUnicode=true
-    username: devcomm
-    password: devcomm1234
+    #jdbcUrl: jdbc:mysql://119.192.148.204:3306/system_failure_mgnt?useSSL=false&characterEncoding=utf8&serverTimezone=UTC&useUnicode=true
+    jdbcUrl: jdbc:mysql://175.126.82.216:56789/HERELAW_DEV?useSSL=false&characterEncoding=utf8&serverTimezone=UTC&useUnicode=true
+    username: herelaw_dev
+    password: hadoop0221
     initial-size: 10
     max-active: 10
     max-idle: 10

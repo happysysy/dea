@@ -13,6 +13,7 @@ ol, ul {
 }
 
 #hero-area .gallery_area .btn {
+    height: 100%;
     margin : 0px !important;
     padding: 0 !important;
     width:100%;
@@ -114,4 +115,59 @@ a {
 .theme_background.ic span {
     color:white;
     opacity: 0.9;
+}
+
+.intro {
+    text-align: center;
+}
+
+.intro>b {
+    font-size: 22px;
+    line-height: 1.3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* carousel */
+.carousel { z-index: -99; } /* keeps this behind all content */
+.carousel .item {
+    position: fixed;
+    width: 100%; height: 100%;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -ms-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+
+}
+.carousel .one {
+    background: url(static/images/gallery/KakaoTalk_20200629_201223740_01.jpg) no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel .two {
+    background: url(static/images/gallery/KakaoTalk_20200629_201223740_02.jpg) no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel .three {
+    background: url(static/images/gallery/KakaoTalk_20200629_201223740_03.jpg) no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel .active.left {
+    left:0;
+    opacity:0;
+    z-index:2;
 }
