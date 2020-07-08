@@ -691,6 +691,7 @@ visual wrap
 }
 
 .carousel-item img {
+  height: 430px;
   /*width: 100%;*/
   /*height: 100%;*/
   /*min-height: 417px;*/
@@ -1134,6 +1135,8 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
 
 /* 768 이하일 때 실행 */
 @media screen and (max-width: 768px) {
+
+
   .navbar-header {
     width: 100%;
   }
@@ -1167,6 +1170,13 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
 /* only small tablets */
 /* 768 이상이고 991 이하일때 실행 */
 @media (min-width: 768px) and (max-width: 991px) {
+
+  .carousel-item img {
+    /* width: 100%; */
+    height: 500px;
+    /*min-height: 610px;*/
+  }
+
   #nav-main li a.nav-link {
     padding-top: 18px;
   }
@@ -1189,8 +1199,8 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
   }
 
   .carousel-item img {
-    width: 100%;
-    height: 100%;
+    /* width: 100%; */
+    height: 500px;
     /*min-height: 610px;*/
   }
 }

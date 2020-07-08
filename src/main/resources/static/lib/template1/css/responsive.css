@@ -44,7 +44,7 @@
 
 /* mobile or only mobile */
 /* 767 이하일때  */
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .section-title {
     font-size: 22px;
     margin-bottom: 30px;
