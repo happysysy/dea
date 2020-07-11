@@ -1197,7 +1197,7 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
   }
 
   #hero-area .overlay {
-    height: calc(100% - 70px);
+    height: calc(100% - 69px);
   }
 
   .carousel-item img {
