@@ -65,22 +65,22 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#price">
+                <a class="nav-link" href="#price"><!-- #price -->
                   가격
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#about">
+                <a class="nav-link" href="#about"><!-- #about -->
                   소개
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#portfolios">
+                <a class="nav-link" href="#portfolios"><!-- #portfolios -->
                   작품
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#contact">
+                <a class="nav-link" href="#contact"><!-- #contact -->
                   문의하기
                 </a>
               </li>
@@ -89,21 +89,21 @@
         </div>
 
         <!-- Mobile Menu Start -->
-        <ul class="onepage-nev mobile-menu">
+        <ul class="onepage-nev mobile-menu" id="main-navbar-mobile">
           <li>
-            <a href="#hero-area">Home</a>
+            <a href="#hero-area">Home</a><!-- #hero-area -->
           </li>
           <li>
-            <a href="#price">가격</a>
+            <a href="#price">가격</a><!-- #price -->
           </li>
           <li>
-            <a href="#about">소개</a>
+            <a href="#about">소개</a><!-- #about -->
           </li>
           <li>
-            <a href="#portfolios">작품</a>
+            <a href="#portfolios">작품</a><!-- #portfolios -->
           </li>
           <li>
-            <a href="#contact">문의하기</a>
+            <a href="#contact">문의하기</a><!-- #contact -->
           </li>
         </ul>
         <!-- Mobile Menu End -->
@@ -262,7 +262,7 @@
 
 
 
-    <section id="price" class="section-padding" style="background-color: white; padding:42px 0;" >
+    <section id="price" class="section-padding" style="background-color: white;" >
       <!-- Container Starts -->
       <div class="container">
         <!--<h2 class="section-title wow flipInX" data-wow-delay="0.4s">대표작품</h2>-->
@@ -549,7 +549,7 @@
                         <div class="help-block with-errors"></div>
                       </div>
                       <div class="submit-button">
-                        <button class="btn btn-common" id="submit" type="submit">메일전송</button>
+                        <button class="btn btn-common" id="btn-send-mail" type="submit">메일전송</button>
                         <div id="msgSubmit" class="h3 text-center hidden"></div> 
                         <div class="clearfix"></div> 
                       </div>
@@ -557,7 +557,8 @@
                   </div>            
                 </form>
 
-                <div class="contact-call-area"><a style="font-size: 20px;" href='tel:010-8410-3917'>전화문의 ) 대표 윤승주 010-8410-3917</a></div>
+                <div class="contact-call-area"><a href='tel:010-8410-3917'>전화문의 ) 대표 윤승주
+                  <br>010-8410-3917</a></div>
 
               </div>
             </div>
@@ -639,13 +640,13 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="modal-assist" style="padding-top:30%">
+    <div class="modal fade" id="modal-assist" style="padding-top:25%">
       <div class="modal-dialog">
         <div class="modal-content">
 
           <!-- Modal Header -->
           <div class="modal-header">
-            <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
               <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
             </svg>
@@ -746,6 +747,31 @@
 
     <script type="text/javascript">
       $(document).ready(function() {
+
+        //  메일전송 클릭 시
+        $( "#btn-send-mail" ).on( "click", function() {
+
+
+          alert( "현재는 전화문의만 가능합니다." );
+        } );
+
+        //  메뉴 자동닫힘
+        $( "body" ).on( "click", function( e ) {
+
+          if( $(e.target).hasClass( "slicknav_btn" )
+          || $( e.target ).hasClass( "slicknav_menutxt" )
+          || $( e.target ).hasClass( "slicknav_icon" )
+          || $( e.target ).hasClass( "slicknav_icon-bar" ) ) {
+
+            return false;
+          }
+          if( $( ".slicknav_nav" ).attr( "aria-hidden" ) == "false" ) {
+            $( ".slicknav_btn" ).click();
+          }
+        } );
+
+
+
 
         var $buttonArea = $( ".main-button-area" );
         $buttonArea.find( ".button1" ).on( "click", function() {
