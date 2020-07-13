@@ -39,10 +39,15 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework/springloaded
     compile group: 'org.springframework', name: 'springloaded', version: '1.2.4.RELEASE'
 
+
     //  개발일 때 ( 실시간 reload )
     compile('org.springframework.boot:spring-boot-devtools')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.projectlombok:lombok')
+
+    // https://mvnrepository.com/artifact/com.sun.mail/javax.mail
+    compile( 'com.sun.mail:javax.mail:1.5.5')
+
 
     compile group: 'javax.persistence', name: 'javax.persistence-api'
     compile('org.apache.tomcat.embed:tomcat-embed-core')
