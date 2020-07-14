@@ -61,10 +61,15 @@ dependencies {
     compile('org.springframework.session:spring-session-jdbc')
     compile('mysql:mysql-connector-java:8.0.20')
 
+    // mail 관련
+    compile( 'org.apache.velocity:velocity:1.5')
+    compile( 'org.apache.commons:commons-email:1.5')
+
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
     annotationProcessor('org.projectlombok:lombok')
+
 }
 
 /*

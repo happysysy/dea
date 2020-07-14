@@ -13,5 +13,12 @@ public class ContactInfo {
     private String title;
     private String contents;
 
+    @Builder
+    public ContactInfo( String name, String email, String title, String contents ) {
+        this.name = name;
+        this.email = email;
+        this.title = title;
+        this.contents = contents;
+    }
 
 }
