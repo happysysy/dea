@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
@@ -23,7 +24,7 @@ public class MainController {
     }
 
     @PostMapping( value = "/main/sendMail" )
-    public boolean sendMail( @ModelAttribute ContactInfo info ) {
+    public @ResponseBody boolean sendMail( @ModelAttribute ContactInfo info ) {
 
         return MailUtil.send( info );
     }

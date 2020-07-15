@@ -523,39 +523,44 @@
             <div class="col-md-12 col-lg-12 col-sm-12 mb-4">
               <div class="contact-block">
                 <h2>문의하기</h2>
-                <form id="contactForm">
+                <div id="contactForm">
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="Your Name" placeholder="성명" required data-error="Please enter your name">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="성명" required data-error="Please enter your name">
                         <div class="help-block with-errors"></div>
-                      </div>                                 
+                      </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="form-group">
-                        <input type="text" placeholder="회신 이메일주소" id="email" class="form-control" name="email" required data-error="Please enter your email">
+                        <input type="text" placeholder="휴대폰번호" name="phone" id="phone" class="form-control" data-error="Please enter your phone">
                         <div class="help-block with-errors"></div>
-                      </div> 
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input type="text" name="email" placeholder="회신 이메일주소" id="email" class="form-control" data-error="Please enter your email">
+                        <div class="help-block with-errors"></div>
+                      </div>
                     </div>
                      <div class="col-md-12">
                       <div class="form-group">
-                        <input type="text" placeholder="제목" id="msg_subject" class="form-control" required data-error="Please enter your subject">
+                        <input type="text" placeholder="제목" name="title" id="msg_subject" class="form-control" required data-error="Please enter your subject">
                         <div class="help-block with-errors"></div>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group"> 
-                        <textarea class="form-control" id="message" placeholder="내용을 입력하세요." rows="5" data-error="Write your message" required></textarea>
+                        <textarea class="form-control" name="contents" id="contents" placeholder="내용을 입력하세요." rows="5" data-error="Write your message" required></textarea>
                         <div class="help-block with-errors"></div>
                       </div>
                       <div class="submit-button">
-                        <button class="btn btn-common" id="btn-send-mail" type="submit">메일전송</button>
-                        <div id="msgSubmit" class="h3 text-center hidden"></div> 
-                        <div class="clearfix"></div> 
+                        <button class="btn btn-common" id="btn-send-mail">메일전송</button>
+                        <div class="clearfix"></div>
                       </div>
                     </div>
                   </div>            
-                </form>
+                </div>
 
                 <div class="contact-call-area"><a href='tel:010-8410-3917'>전화문의 ) 대표 윤승주
                   <br>010-8410-3917</a></div>
@@ -733,6 +738,8 @@
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="/static/lib/template1/js/jquery-min.js"></script>
+    <script src="/static/lib/js/jquery.blockUI.js"></script>
+
     <script src="/static/lib/template1/js/popper.min.js"></script>
     <script src="/static/lib/template1/js/bootstrap.min.js"></script>
     <script src="/static/lib/template1/js/jquery.mixitup.js"></script>
@@ -751,8 +758,47 @@
         //  메일전송 클릭 시
         $( "#btn-send-mail" ).on( "click", function() {
 
+          var phone = $( "#phone" ).val();
+          var email = $( "#email" ).val();
+          var name = $( "#name" ).val();
+          var contents = $( "#contents" ).val();
 
-          alert( "현재는 전화문의만 가능합니다." );
+          if( !name || !contents ) {
+            return;
+          }
+          if( !phone && !email ) {
+            alert( "답변을 위해 휴대폰번호 또는 이메일 중 하나는 필수입니다." );
+            return;
+          }
+          let param = {
+            phone : phone,
+            email : email,
+            name : name,
+            contents : contents,
+            title : $( "#msg_subject" ).val()
+          };
+
+          $.blockUI({ message: '메일 전송중입니다..' });
+
+          $.post("/main/sendMail", param, function ( data ) {
+
+            if( "boolean" != typeof data || !data ) {
+              alert( "오류발생" );
+            }
+
+            //  전송중 표시 삭제
+            $.unblockUI();
+            alert( "메일전송이 완료되었습니다." );
+
+
+            $( "#phone" ).val( "" );
+            $( "#email" ).val( "" );
+            $( "#name" ).val( "" );
+            $( "#contents" ).val( "" );
+            $( "#msg_subject" ).val( "" );
+
+          });
+
         } );
 
         //  메뉴 자동닫힘

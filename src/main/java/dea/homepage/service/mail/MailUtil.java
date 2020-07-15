@@ -50,20 +50,24 @@ public class MailUtil {
             message.setFrom(new InternetAddress(mailAddr));
 
             //수신자메일주소
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress("sy940807@naver.com"));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress("chlong941@gmail.com"));
 
             // Subject
 //            message.setSubject( info.getTitle()); //메일 제목을 입력
             message.setSubject( "[DEA 홈페이지 문의] " + info.getTitle() );
 
 
+            //  메일내용( 문의자 정보, 문의사항 )
             String contents = "* 문의자정보\r\n\r\n";
             contents += "  성함         : " + info.getName() + "\r\n";
-            contents += "  회신메일     : " + info.getEmail() + "\r\n";
-
+            if( StringUtils.hasText( info.getPhone() ) ) {
+                contents += "  연락처     : " + info.getPhone() + "\r\n";
+            }
+            if( StringUtils.hasText( info.getEmail() ) ) {
+                contents += "  회신메일     : " + info.getEmail() + "\r\n";
+            }
             contents += "\r\n\r\n\r\n* 문의사항\r\n\r\n  " + info.getContents();
 
-            // Text
             message.setText( contents );    //메일 내용을 입력
 
             // send the message
