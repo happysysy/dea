@@ -19,5 +19,8 @@ public class WebConfig {
             registry.addResourceHandler("/static/**")
                     .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
         }
+
     }
+
+
 }

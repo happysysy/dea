@@ -111,6 +111,7 @@ public class SpringApplicationContext implements ApplicationContextAware, Applic
      */
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
+
         // bootstraping 시 context Refreshed event가 두번 발생함. root와, dispatcher servlet 이를 구분해서 처리해야한다.
         if (event instanceof ContextRefreshedEvent) {
             if (((ContextRefreshedEvent) event).getApplicationContext().getParent() == null) {

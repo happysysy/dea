@@ -3,6 +3,9 @@ server:
   port: 9999
 
 spring:
+  thymeleaf:
+    prefix: classpath:/templates
+
   profiles: local
   http:
     encoding:

@@ -14,6 +14,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.templatemode.TemplateMode;
 
 import java.util.Arrays;
 
@@ -56,4 +58,20 @@ public class WebApplication extends SpringBootServletInitializer {
     }
 
 
+
+    @Bean
+    public SpringResourceTemplateResolver templateResolver(){
+        // SpringResourceTemplateResolver automatically integrates with Spring's own
+        // resource resolution infrastructure, which is highly recommended.
+        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+        templateResolver.setApplicationContext( context );
+        templateResolver.setPrefix("classpath:templates/");
+        templateResolver.setSuffix(".html");
+        // HTML is the default value, added here for the sake of clarity.
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        // Template cache is true by default. Set to false if you want
+        // templates to be automatically updated when modified.
+        templateResolver.setCacheable(true);
+        return templateResolver;
+    }
 }
