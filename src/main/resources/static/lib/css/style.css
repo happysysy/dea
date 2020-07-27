@@ -290,4 +290,14 @@ a {
 }
 
 .btn-login-submit:hover, .btn-login-submit:focus, .btn-login-submit:active, .btn-login-submit.active {
-    background: #73879C; }
+    background: #73879C;
+}
+
+
+
+@media (min-width: 576px) {
+
+    .container {
+        max-width: none;
+    }
+}

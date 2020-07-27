@@ -1137,7 +1137,6 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
 /* 768 이하일 때 실행 */
 @media screen and (max-width: 768px) {
 
-
   .navbar-header {
     width: 100%;
   }
