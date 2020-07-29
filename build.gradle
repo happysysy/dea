@@ -21,6 +21,7 @@ group = 'com.dea.homepage'
 sourceCompatibility='8'
 
 bootWar {
+
     archivesBaseName = "ROOT"
     archiveFileName = "ROOT.war"
 }
@@ -42,7 +43,6 @@ dependencies {
 
     //  개발일 때 ( 실시간 reload )
     compile('org.springframework.boot:spring-boot-devtools')
-    compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 
@@ -57,12 +57,16 @@ dependencies {
     //implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
 
     implementation('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect')
-    implementation('org.springframework.boot:spring-boot-starter-tomcat')
+
+    /*springboot는 내장톰캣을 지원하기 때문에 의존성 추가*/
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 
     //db관련
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation( 'org.springframework.session:spring-session-jdbc' )
     compile('com.h2database:h2')
-    compile('org.springframework.session:spring-session-jdbc')
+
     compile('mysql:mysql-connector-java:8.0.20')
 
     // mail 관련
