@@ -53,9 +53,10 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     #jdbcUrl: jdbc:mysql://119.192.148.204:3306/system_failure_mgnt?useSSL=false&characterEncoding=utf8&serverTimezone=UTC&useUnicode=true
-    jdbcUrl: jdbc:mysql://175.126.82.216:56789/HERELAW_DEV?useSSL=false&characterEncoding=utf8&serverTimezone=UTC&useUnicode=true
-    username: herelaw_dev
-    password: hadoop0221
+    #jdbcUrl: jdbc:mysql://175.126.82.216:56789/HERELAW_DEV?useSSL=false&characterEncoding=utf8&serverTimezone=UTC&useUnicode=true
+    jdbcUrl: jdbc:mysql://210.114.1.173:3306/DEA_HOMEPAGE?useSSL=false&characterEncoding=utf8&serverTimezone=UTC&useUnicode=true
+    username: dea
+    password: dbstmdwn123
     initial-size: 10
     max-active: 10
     max-idle: 10
@@ -63,6 +64,12 @@ spring:
     max-wait: 3000
     test-on-borrow: true
     validation-query: select 1
+    schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: always
+      table-name: SPRING_SESSION
 
 
 # logging
