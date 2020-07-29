@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@Import({ JpaDatabaseConfig.class })
+//@Import({ JpaDatabaseConfig.class })
 public class WebConfig {
     @Configuration
     @EnableWebMvc
