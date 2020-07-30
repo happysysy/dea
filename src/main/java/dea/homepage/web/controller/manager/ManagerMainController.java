@@ -11,6 +11,6 @@ public class ManagerMainController {
     @GetMapping( value = "" )
     public String index() {
 
-        return "/manager/main";
+        return "/manager/index";
     }
 }

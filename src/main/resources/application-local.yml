@@ -1,6 +1,6 @@
 # Server
 server:
-  port: 9999
+  port: 7777
 
 spring:
   thymeleaf:
