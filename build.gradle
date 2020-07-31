@@ -34,6 +34,9 @@ repositories {
 //공통
 dependencies {
 
+    implementation( 'org.springframework.boot:spring-boot-starter-security')
+    //implementation( 'org.thymeleaf.extras:thymelertaf-extras-springsecurity5' )
+
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
     //  compile( 'org.springframework.springloaded' )
