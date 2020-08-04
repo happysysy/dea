@@ -1,4 +1,4 @@
-package dea.homepage.web.controller.manager;
+package dea.homepage.web.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping( "/manager" )
-public class ManagerLoginController {
+public class AdminLoginController {
 
     @GetMapping( "" )
     public String index() {
