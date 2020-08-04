@@ -62,6 +62,7 @@ spring:
     max-idle: 10
     min-idle: 10
     max-wait: 3000
+
     test-on-borrow: true
     validation-query: select 1
     schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
