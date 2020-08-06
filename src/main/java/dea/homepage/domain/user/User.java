@@ -1,4 +1,4 @@
-package dea.homepage.vo.member;
+package dea.homepage.domain.user;
 
 import lombok.*;
 
@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Getter
 @ToString
-public class Member {
+public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -27,14 +27,16 @@ public class Member {
     //관리자 또는 사용자
     private String role;
 
-    public Member( String id, String password, String name, String role ) {
+    public User(String id, String password, String name, String role ) {
         this.id = id;
         this.password = password;
         this.name = name;
         this.role = role;
     }
 
-
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
 
 }
