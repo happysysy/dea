@@ -11,7 +11,13 @@ public class MainController {
     @RequestMapping( value = "/" )
     public String index() {
 
-        return "redirect:/main";
+        return "redirect:/user";
+    }
+
+    @RequestMapping( value = "/user" )
+    public String index2() {
+
+        return "/user/index";
     }
 
     @GetMapping( value = "/main" )

@@ -37,17 +37,17 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form id="form-login">
               <h1>DEA 관리자페이지</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" name="id" class="form-control" placeholder="Username" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" name="password" class="form-control" placeholder="Password" required="" />
               </div>
               <div>
-                <button type="submit" class="btn btn-success btn-login-submit">로그인</button>
               </div>
+              <button type="submit" class="btn btn-success btn-login-submit" id="btn-submit">로그인</button>
               <!--
               <div>
                 <a class="btn btn-default submit" href="index.html">Log in</a>
@@ -70,12 +70,11 @@
               </div>
               -->
 
-
-
             </form>
           </section>
         </div>
 
+        <!--
         <div id="register" class="animate form registration_form">
           <section class="login_content">
             <form>
@@ -107,11 +106,46 @@
                   <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
                   <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
                 </div>
+
               </div>
             </form>
           </section>
         </div>
+        -->
+
+
+
       </div>
     </div>
+
+    <script src="/static/lib/template1/js/jquery-min.js"></script>
+
+
+
+
+    <script>
+
+      //  버튼 클릭 시
+      $( "#btn-submit" ).on( "click", function () {
+
+        let $formArea = $( "#form-login" );
+
+        let userId = $formArea.find( "[name='id']" );
+        let password = $formArea.find( "[name='password']" );
+        if( $.isEmptyObject( userId ) || $.isEmptyObject( password ) ) {
+          return;
+        }
+
+        //  login process
+        $formArea.attr( "method", "POST" );
+        $formArea.attr( "action", "/perform_login" );
+
+        //perform_login
+
+        $formArea.submit();
+      });
+
+
+    </script>
   </body>
 </html>
