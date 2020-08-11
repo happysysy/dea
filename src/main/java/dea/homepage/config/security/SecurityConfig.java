@@ -32,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser( "admin" ).password( passwordEncoder().encode( "1111" )).roles( "ADMIN" );
     }
+
     @Override
     public void configure( HttpSecurity http ) throws Exception {
 
@@ -39,14 +40,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()    //사용자가 인증할 수 있
                 // 도록 /login에 익명 엑세스를 허용
                 .antMatchers("/").permitAll()
-                .antMatchers("/user").permitAll()
+                .antMatchers("/user").permitAll()   //사용자페이지는 누구나 접속
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
 
                 .formLogin()
                 .loginPage("/admin")    //로그인 안되어있을 시 url
-                .loginProcessingUrl( "/perform_login" )     //로그인로직 실행 url
+                .loginProcessingUrl( "/admin/perform_login" )     //로그인로직 실행 url
+                .failureUrl( "/admin" )
                 .defaultSuccessUrl("/admin/main")
                 .permitAll()     //양식 로그인 동작 구성
 
@@ -56,7 +58,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy( SessionCreationPolicy.ALWAYS);
 
         http.logout()
-                .logoutUrl( "/perform_logout" )
+                .logoutUrl( "/admin/perform_logout" )
+                .logoutSuccessUrl("/admin")
+                .invalidateHttpSession( true )
                 .deleteCookies( "JSESSIONID");
 
         //web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/lib/**");
