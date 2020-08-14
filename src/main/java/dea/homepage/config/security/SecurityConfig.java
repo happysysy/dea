@@ -11,9 +11,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity  // Spring security 설정 활성화
 @AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -36,29 +37,41 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure( HttpSecurity http ) throws Exception {
 
+
         http
-                .authorizeRequests()    //사용자가 인증할 수 있
-                // 도록 /login에 익명 엑세스를 허용
+                .csrf().disable()
+                /**
+                 * authorizeRequests - URL별 권한관리를 설정하는 옵션의 시작점
+                 * antMatchers      - 권한관리대상을 지정하는 옵션
+                 * anyRequest       - 나머지 URL
+                 * authenticated    - 인증된 사용자 (로그인한 사용자만 사용할수 있도록)
+                 */
+                .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/user").permitAll()   //사용자페이지는 누구나 접속
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
+
                 .and()
 
                 .formLogin()
                 .loginPage("/admin")    //로그인 안되어있을 시 url
                 .loginProcessingUrl( "/admin/perform_login" )     //로그인로직 실행 url
+                .defaultSuccessUrl("/admin/main", true )
+                .usernameParameter( "id" )
+                .passwordParameter( "password" )
                 .failureUrl( "/admin" )
-                .defaultSuccessUrl("/admin/main")
                 .permitAll()     //양식 로그인 동작 구성
 
-                ;
+
+        ;
 
         //  스프링시큐리티가 항상 쎄션을 생성
         http.sessionManagement().sessionCreationPolicy( SessionCreationPolicy.ALWAYS);
 
         http.logout()
-                .logoutUrl( "/admin/perform_logout" )
+                //.logoutUrl( "/admin/perform_logout" )
+                .logoutRequestMatcher(new AntPathRequestMatcher("/admin/perform_logout"))
                 .logoutSuccessUrl("/admin")
                 .invalidateHttpSession( true )
                 .deleteCookies( "JSESSIONID");
@@ -68,8 +81,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web ) throws Exception {
-        web.ignoring().antMatchers( "/**" );
+        web.ignoring().antMatchers( "/static/**" );
     }
+
     /*
     @Override
     public void configure(AuthenticationManagerBuilder auth ) throws Exception {

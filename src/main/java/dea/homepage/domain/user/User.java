@@ -1,11 +1,10 @@
 package dea.homepage.domain.user;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor( access =  AccessLevel.PROTECTED )
@@ -25,7 +24,12 @@ public class User {
     private String name;
 
     //관리자 또는 사용자
+    //@OneToMany( cascade=CascadeType.ALL, fetch=FetchType.EAGER )
     private String role;
+
+    //  가입일
+    @CreationTimestamp
+    private LocalDateTime regdate;
 
     public User(String id, String password, String name, String role ) {
         this.id = id;
