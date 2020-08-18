@@ -11,6 +11,7 @@ public class AdminMainController {
     @GetMapping( value = "" )
     public String index() {
 
-        return "/admin/index";
+        //return "/admin/index";
+        return "/admin/management/thumbnail";
     }
 }
